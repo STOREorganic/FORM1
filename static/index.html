@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Affordable Organic Store</title>
+    <link rel="stylesheet" href="form.css" />
+  </head>
+  <body>
+    <div id="box">
+      <form action="" name="submit-to-google-sheet" method="post">
+        <h4>Raw material packing data</h4>
+
+        <label for="sn">Serial No.</label>
+        <input
+          type="number"
+          name="Sno."
+          id="sn"
+          placeholder="Sno."
+          required
+        /><br />
+
+        <label for="date-of-packing">Date of packing</label>
+        <input
+          type="date"
+          name="Date_of_packing "
+          id="date-of-packing"
+          placeholder="Date of packing"
+          required
+        /><br />
+
+        <label for="name-of-packer">Name of Packer</label>
+        <select
+          name="Name_of_Packer"
+          id="name-of-packer"
+          placeholder="Name of Packer"
+          required
+        >
+        <option value="" disabled selected hidden >Select Name of Packer</option>
+        <option value="Aryan">Aryan</option>
+        <option value="L. Santhosh">L. Santhosh</option>
+        <option value="Mahesh">Mahesh</option>
+        <option value="Nithin">Nithin</option>
+        <option value="Ratna">Ratna</option>
+        <option value="Kavitha">Kavitha</option>
+        <option value="Nandani">Nandani</option>
+        <option value="Annpurna">Annpurna</option>
+        <option value="Akshya">Akshya</option>
+        <option value="Krishnaveni">Krishnaveni</option>
+        <option value="Farana">Farana</option>
+        <option value="Preethi">Preethi</option>
+        <option value="Padma">Padma</option>
+        <option value="Sharun">Sharun</option>
+        <option value="Latha2">Latha2</option>
+        <option value="Anitha">Anitha</option>
+        <option value="Jasmine">Jasmine</option>
+        <option value="Latha">Latha</option>
+        <option value="Ravanamma">Ravanamma</option>
+        <option value="Pushpa">Pushpa</option>
+        <option value="Jyoshnika">Jyoshnika</option>
+        <option value="Chaitanya">Chaitanya</option>
+        <option value="Tirupathi">Tirupathi</option>
+        <option value="Kumari">Kumari</option>
+        <option value="Sheeba">Sheeba</option>
+        <option value="Sarada">Sarada</option>
+        <option value="Suneetha">Suneetha</option>
+        <option value="Ashiq Lal">Ashiq Lal</option>
+        <option value="Sunandha">Sunandha</option>
+        </select>
+        <br />
+
+        <label for="raw-material-name">Raw material name</label>
+        <input
+          type="text"
+          name="Raw_material_name"
+          id="raw-material-name"
+          placeholder="Raw material name"
+          required
+        /><br />
+
+        <label for="weight-per-packet">Weight per packet</label>
+        <input
+          type="number"
+          name="Weight_per_packet "
+          id="weight-per-packet"
+          placeholder="Weight per packet"
+          required
+        /><br />
+
+        <label for="number-of-packets">Number of packets</label>
+        <input
+          type="number"
+          name="No._of_packets "
+          id="number-of-packets"
+          placeholder="Number of packets"
+          required
+        /><br />
+
+        <label for="raw-material-weight">Raw material weight</label>
+        <input
+          type="number"
+          name="Raw_Material_Weight"
+          id="raw-material-weight"
+          placeholder="Raw material weight"
+          required
+        /><br />
+
+        <input type="submit" value="Submit" id="submit" />
+      </form>
+    </div>
+
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxVrift2kFEZMjxCvoHpexWseS4K-n0xmlyBJO7FH3IoP8G0iWXREi5ONdU0_X1-SaY/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Submitting your data, please wait...");
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            alert("Your response has been successfully submitted. Thank you!");
+            window.location.reload(); // Reload the page after successful submission
+          })
+
+          .catch((error) => alert("Error!", error.message));
+      });
+    </script>
+  </body>
+</html>
